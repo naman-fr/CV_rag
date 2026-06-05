@@ -14,9 +14,9 @@ from pydantic import Field, model_validator
 class Settings(BaseSettings):
     """Application settings from environment variables."""
 
-    # --- API Keys (optional fallback) ---
-    groq_api_key: str = Field(default="", description="Groq API key for LLM calls")
-    gemini_api_key: str = Field(default="", description="Google Gemini API key for embeddings")
+    # --- API Keys (required) ---
+    groq_api_key: str = Field(..., description="Groq API key for LLM calls")
+    gemini_api_key: str = Field(..., description="Google Gemini API key for embeddings")
 
     # --- API Keys (optional) ---
     pinecone_api_key: str = Field(default="", description="Pinecone API key")
